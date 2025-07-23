@@ -1,12 +1,12 @@
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 
-const adapter = new JSONFile('db.json');
-const db = new Low(adapter);
-await db.read();
-db.data ||= { keys: [] };
+export default async function handler(req, res) {
+  const adapter = new JSONFile('db.json');
+  const db = new Low(adapter);
+  await db.read();
+  db.data ||= { keys: [] };
 
-export default async (req, res) => {
   const { key } = req.query;
   if (!key) return res.status(400).json({ valid: false, error: "Key not provided" });
 
@@ -17,4 +17,4 @@ export default async (req, res) => {
   if (expired) return res.status(410).json({ valid: false, expired: true });
 
   res.status(200).json({ valid: true });
-};
+}
