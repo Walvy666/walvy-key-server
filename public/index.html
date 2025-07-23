@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Walvy Key System</title>
+</head>
+<body>
+  <h1>✅ Walvy Key System</h1>
+  <button onclick="getKey()">🎯 Generate Key</button>
+  <p id="result">Klik tombol di atas</p>
 
+  <script>
+    async function getKey() {
+      document.getElementById("result").textContent = "Memproses...";
+      try {
+        const res = await fetch("/api/generate-key", { method: "POST" });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById("result").textContent = "✅ Key kamu: " + data.key;
+        } else {
+          document.getElementById("result").textContent = "❌ Gagal generate key.";
+        }
+      } catch (err) {
+        document.getElementById("result").textContent = "❌ Error: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
