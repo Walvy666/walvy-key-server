@@ -1,9 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.js" }
-  ]
+  "name": "walvy-key-system",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
 }
