@@ -1,0 +1,10 @@
+{
+  "name": "walvy-key-system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "lowdb": "^6.0.1",
+    "nanoid": "^4.0.2"
+  }
+}
